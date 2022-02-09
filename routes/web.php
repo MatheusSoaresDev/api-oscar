@@ -12,6 +12,9 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+$router->post('/oscar', 'OscarController@create');
 
 $router->get('/oscar', 'OscarController@getAll');
 $router->get('/oscar/{ano}', 'OscarController@getAno');
+
+
