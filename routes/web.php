@@ -14,7 +14,7 @@
 */
 $router->post('/oscar', 'OscarController@create');
 
-$router->get('/oscar', 'OscarController@getAll');
+$router->get('/oscar', 'OscarController@index');
 $router->get('/oscar/{ano}', 'OscarController@getAno');
 
 

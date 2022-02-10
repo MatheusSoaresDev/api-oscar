@@ -3,25 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Edicao;
-use http\Env\Request;
+use App\Repositories\Contracts\OscarRepositoryInterface;
 
-class OscarController extends Controller
+class OscarController //extends BaseController
 {
-    public function create()
-    {
-        $oscar = new Edicao();
-        $oscar->id = uniqid('ed_');
-        $oscar->ano = '2014';
-        $oscar->local = 'Teatro Dolby';
-        $oscar->data = '2014-03-02';
-        $oscar->cidade = 'Los Angeles, Califórnia EUA';
 
-        $oscar->save();
-    }
-
-    public function getAll()
+    public function index(OscarRepositoryInterface $model)
     {
-        return Edicao::all();
+        return $model->all();
     }
 
     public function getAno(int $ano)

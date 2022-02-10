@@ -48,6 +48,11 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+$app->singleton(
+    App\Repositories\Contracts\OscarRepositoryInterface::class,
+    App\Repositories\Eloquent\OscarRepository::class,
+);
+
 /*
 |--------------------------------------------------------------------------
 | Register Config Files
@@ -60,6 +65,9 @@ $app->singleton(
 */
 
 $app->configure('app');
+
+$app->configure('tinker');
+$app->register(\Laravel\Tinker\TinkerServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

@@ -14,7 +14,7 @@ class CriarTabelaEdicao extends Migration
     public function up()
     {
         Schema::create('edicao', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->uuid('uuid')->unique();
             $table->year('ano')->unique();
             $table->string('local');
             $table->date('data');
