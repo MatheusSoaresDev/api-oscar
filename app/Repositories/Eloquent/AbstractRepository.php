@@ -16,6 +16,19 @@ abstract class AbstractRepository
         return $this->model->all();
     }
 
+    public function create(array $data)
+    {
+       return $this->model->create($data);
+    }
+
+    public function update(array $data)
+    {
+    }
+
+    public function delete(string $id)
+    {
+    }
+
     protected function resolveModel()
     {
         return app($this->model);

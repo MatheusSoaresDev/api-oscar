@@ -12,7 +12,11 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-$router->post('/oscar', 'OscarController@create');
+$router->post('/auth', 'Auth\AuthController@login');
+
+$router->group(['middleware' => 'apiJwt'], function () use ($router) {
+    $router->post('/oscar', 'OscarController@create');
+});
 
 $router->get('/oscar', 'OscarController@index');
 $router->get('/oscar/{ano}', 'OscarController@getAno');

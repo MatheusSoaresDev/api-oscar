@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CriarTabelaEdicao extends Migration
+class CreateTableOscar extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CriarTabelaEdicao extends Migration
      */
     public function up()
     {
-        Schema::create('edicao', function (Blueprint $table) {
+        Schema::create('oscar', function (Blueprint $table) {
             $table->uuid('uuid')->unique();
-            $table->year('ano')->unique();
             $table->string('local');
-            $table->date('data');
+            $table->date('data')->unique();
             $table->string('cidade');
+            $table->string('apresentador');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CriarTabelaEdicao extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('edicao');
+        Schema::dropIfExists('table_oscar');
     }
 }

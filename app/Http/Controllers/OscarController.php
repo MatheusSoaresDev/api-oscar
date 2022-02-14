@@ -2,19 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Edicao;
+use App\Http\Requests\OscarCreateRequest;
+use App\Models\Oscar;
 use App\Repositories\Contracts\OscarRepositoryInterface;
+use Illuminate\Http\Request;
 
 class OscarController //extends BaseController
 {
+    private OscarRepositoryInterface $oscarRepository;
 
-    public function index(OscarRepositoryInterface $model)
+    public function __Construct(OscarRepositoryInterface $oscarRepository)
     {
-        return $model->all();
+        $this->oscarRepository = $oscarRepository;
+    }
+
+    public function index()
+    {
+        return response()->json($this->oscarRepository->all());
+    }
+
+    public function create(OscarCreateRequest $request)
+    {
+        return response()->json($this->oscarRepository->create($request->all()));
     }
 
     public function getAno(int $ano)
     {
-        return Edicao::where('ano', $ano)->get();
+        //return Oscar::where('ano', $ano)->get();
     }
 }
