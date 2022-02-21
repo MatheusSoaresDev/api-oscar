@@ -48,9 +48,16 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+// Interfaces e repositorios do projeto //
+
 $app->singleton(
     App\Repositories\Contracts\OscarRepositoryInterface::class,
     App\Repositories\Eloquent\OscarRepository::class,
+);
+
+$app->singleton(
+    App\Repositories\Contracts\PremioRepositoryInterface::class,
+    App\Repositories\Eloquent\PremioRepository::class,
 );
 
 /*
@@ -123,5 +130,10 @@ $app->router->group([
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
+
+if (env('APP_ENV') === 'local') {
+    $app->bind(Illuminate\Database\ConnectionResolverInterface::class, Illuminate\Database\ConnectionResolver::class);
+    $app->register(Niellles\LumenCommands\LumenCommandsServiceProvider::class);
+}
 
 return $app;

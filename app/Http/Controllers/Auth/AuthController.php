@@ -7,7 +7,6 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Lumen\Routing\Controller as BaseController;
-use Seiya\UserApi;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends BaseController

@@ -16,6 +16,7 @@ $router->post('/auth', 'Auth\AuthController@login');
 
 $router->group(['middleware' => 'apiJwt'], function () use ($router) {
     $router->post('/oscar', 'OscarController@create');
+    $router->post('/premio', 'PremioController@create');
 });
 
 $router->get('/oscar', 'OscarController@index');

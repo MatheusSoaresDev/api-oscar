@@ -10,11 +10,13 @@
         "gladcodes/keygen": "^1.1",
         "laravel/lumen-framework": "^8.3.1",
         "laravel/tinker": "^2.7",
+        "laravelista/lumen-vendor-publish": "^8.0",
         "pearl/lumen-request-validate": "^1.6",
         "tymon/jwt-auth": "1.*"
     },
     "require-dev": {
         "mockery/mockery": "^1.3.1",
+        "niellles/lumen-commands": "^1.0",
         "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {

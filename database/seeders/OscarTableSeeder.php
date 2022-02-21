@@ -10,7 +10,7 @@ class OscarTableSeeder extends Seeder
     public function run()
     {
         Oscar::factory()
-            ->count(50)
+            ->count(1)
             ->create();
     }
 }

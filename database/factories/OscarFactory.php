@@ -12,7 +12,7 @@ class OscarFactory extends Factory
     public function definition()
     {
         return [
-            'uuid' => $this->faker->uuid,
+            //'uuid' => $this->faker->uuid,
             'local' => $this->faker->state,
             'data' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'cidade' => $this->faker->city.', '.$this->faker->countryCode,

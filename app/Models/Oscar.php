@@ -11,15 +11,20 @@ class Oscar extends Model
     use HasFactory;
 
     public $timestamps = true;
-    protected $fillable = ['uuid', 'local', 'data', 'cidade', 'apresentador'];
-    protected $table = 'Oscar';
+    protected $fillable = ['id', 'local', 'data', 'cidade', 'apresentador'];
+    protected $table = 'oscar';
 
-    protected $primaryKey = 'uuid';
-    protected $keyType = 'string';
-    public $incrementing = false;
+    //protected $primaryKey = 'id';
+    //protected $keyType = 'string';
+    //public $incrementing = true;
 
-    protected static function booted()
+    /*protected static function booted()
     {
         static::creating(fn(Oscar $oscar) => $oscar->uuid = (string) Uuid::uuid4());
+    }*/
+
+    public function premios()
+    {
+        return $this->hasMany(Premio::class);
     }
 }

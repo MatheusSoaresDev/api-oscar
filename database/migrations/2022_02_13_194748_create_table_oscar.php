@@ -14,7 +14,7 @@ class CreateTableOscar extends Migration
     public function up()
     {
         Schema::create('oscar', function (Blueprint $table) {
-            $table->uuid('uuid')->unique();
+            $table->id();
             $table->string('local');
             $table->date('data')->unique();
             $table->string('cidade');

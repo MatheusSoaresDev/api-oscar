@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Models\Edicao;
 use App\Models\Oscar;
+use App\Models\Premio;
 use App\Repositories\Contracts\OscarRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\DB;
 class OscarRepository extends AbstractRepository implements OscarRepositoryInterface
 {
     protected $model = Oscar::class;
+
+    public function index()
+    {
+        $oscar = $this->model::with('premios')->get();
+        return $oscar;
+    }
 
     public function create(array $data)
     {
