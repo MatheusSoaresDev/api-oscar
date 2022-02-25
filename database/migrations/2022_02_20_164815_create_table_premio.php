@@ -15,7 +15,7 @@ class CreateTablePremio extends Migration
     {
         Schema::create('premio', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 255)->unique();
+            $table->string('nome', 255);
             $table->foreignId('oscar_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
 

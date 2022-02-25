@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Models\Filme;
 use App\Models\Oscar;
 use App\Models\Premio;
 use App\Repositories\Contracts\OscarRepositoryInterface;
@@ -14,8 +15,7 @@ class OscarRepository extends AbstractRepository implements OscarRepositoryInter
 
     public function index()
     {
-        $oscar = $this->model::with('premios')->get();
-        return $oscar;
+        return $this->model::with(['premios.indicados'])->get();
     }
 
     public function create(array $data)

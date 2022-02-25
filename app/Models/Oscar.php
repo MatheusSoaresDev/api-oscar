@@ -13,6 +13,7 @@ class Oscar extends Model
     public $timestamps = true;
     protected $fillable = ['id', 'local', 'data', 'cidade', 'apresentador'];
     protected $table = 'oscar';
+    protected $visible = ['id', 'local', 'data', 'cidade', 'apresentador', 'premios'];
 
     //protected $primaryKey = 'id';
     //protected $keyType = 'string';

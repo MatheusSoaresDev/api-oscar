@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Oscar;
 use App\Models\Premio;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +16,8 @@ class PremioTableSeeder extends Seeder
     public function run()
     {
         Premio::factory()
-            ->count(10)
+            ->count(5)
+            ->forOscar()
             ->create();
     }
 }

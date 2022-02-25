@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Oscar;
+use App\Models\Filme;
 use Illuminate\Database\Seeder;
 
-class OscarTableSeeder extends Seeder
+class FilmeTableSeeder extends Seeder
 {
     public function run()
     {
-        Oscar::factory()
+        Filme::factory()
             ->count(5)
             ->create();
     }

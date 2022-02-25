@@ -21,5 +21,3 @@ $router->group(['middleware' => 'apiJwt'], function () use ($router) {
 
 $router->get('/oscar', 'OscarController@index');
 $router->get('/oscar/{ano}', 'OscarController@getAno');
-
-

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Oscar;
 use App\Models\Premio;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -12,8 +13,8 @@ class PremioFactory extends Factory
     public function definition()
     {
         return [
-            'uuid' => $this->faker->uuid,
-            'nome' => $this->faker->state,
+            'nome' => $this->faker->name,
+            'oscar_id' => Oscar::factory()
         ];
     }
 }

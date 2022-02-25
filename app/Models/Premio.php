@@ -15,8 +15,7 @@ class Premio extends Model
     public $timestamps = true;
     protected $fillable = ['id', 'nome', 'oscar_id'];
     protected $table = 'premio';
-
-    protected $visible = ['id', 'nome'];
+    protected $visible = ['id', 'nome', 'indicados'];
 
     //protected $primaryKey = 'id';
     //protected $keyType = 'string';
@@ -30,5 +29,10 @@ class Premio extends Model
     public function oscar()
     {
         return $this->belongsTo(Oscar::class);
+    }
+
+    public function indicados()
+    {
+        return $this->belongsToMany(Filme::class);
     }
 }
