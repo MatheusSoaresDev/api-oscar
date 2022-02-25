@@ -35,7 +35,7 @@ class AllTableSeeder extends Seeder
     private function createFilme()
     {
         Premio::factory()
-            ->forOscar()
+            ->forOscar()->count(5)
             ->has(Filme::factory()->count(3))
             ->create();
     }

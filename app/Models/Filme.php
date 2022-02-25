@@ -19,4 +19,5 @@ class Filme extends Model
     {
         return $this->belongsToMany(Premio::class);
     }
+
 }
