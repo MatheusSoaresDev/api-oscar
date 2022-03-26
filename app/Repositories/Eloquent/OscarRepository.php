@@ -15,12 +15,15 @@ class OscarRepository extends AbstractRepository implements OscarRepositoryInter
 
     public function index()
     {
-        return $this->model::with(['premios.indicados'])->get();
+        //return $this->model->with(['filmes','artistas'])->get()->toArray();
+        return $this->model->with(['premios_filmes.indicados' => function ($query){
+            $query->select('*');
+        }])->get()->toArray();
     }
 
     public function create(array $data)
     {
-        try{
+        try {
             $data = (object)$data;
 
             $this->verificaAno($data->data);

@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Ramsey\Uuid\Nonstandard\Uuid;
 
-class Premio extends Model
+abstract class Premio extends Model
 {
     use HasFactory;
 
     public $timestamps = true;
     protected $fillable = ['id', 'nome', 'oscar_id'];
-    protected $table = 'premio';
-    protected $visible = ['id', 'nome', 'indicados'];
+    protected $visible = ['id', 'nome', 'indicados', 'pessoas'];
 
     //protected $primaryKey = 'id';
     //protected $keyType = 'string';
@@ -31,8 +30,5 @@ class Premio extends Model
         return $this->belongsTo(Oscar::class);
     }
 
-    public function indicados()
-    {
-        return $this->belongsToMany(Filme::class);
-    }
+    public abstract function indicados();
 }

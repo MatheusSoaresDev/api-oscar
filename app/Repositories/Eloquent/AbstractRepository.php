@@ -23,10 +23,12 @@ abstract class AbstractRepository
 
     public function update(array $data)
     {
+
     }
 
     public function delete(string $id)
     {
+
     }
 
     protected function resolveModel()

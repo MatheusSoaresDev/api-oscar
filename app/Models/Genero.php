@@ -11,9 +11,9 @@ class Genero extends Model
     use HasFactory;
 
     public $timestamps = true;
-    protected $fillable = ['id', 'nome', 'descricao'];
+    protected $fillable = ['id', 'nome'];
     protected $table = 'genero';
-    protected $visible = ['id', 'nome', 'descricao'];
+    protected $visible = ['id', 'nome'];
 
     public function filmes()
     {

@@ -17,6 +17,8 @@ class CreateTableFilme extends Migration
             $table->id();
             $table->string('nome');
             $table->date('data_lancamento');
+            $table->time('duracao');
+            $table->string('pais');
             $table->string('distribuidora');
             $table->timestamps();
         });
