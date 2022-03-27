@@ -15,10 +15,27 @@ class OscarRepository extends AbstractRepository implements OscarRepositoryInter
 
     public function index()
     {
-        //return $this->model->with(['filmes','artistas'])->get()->toArray();
-        return $this->model->with(['premios_filmes.indicados' => function ($query){
-            $query->select('*');
-        }])->get()->toArray();
+        return $this->model->with
+        ([
+            'premios_filmes.indicados' => function ($query){
+                $query->select('*');
+            }, 'premios_artistas.indicados' => function ($query){
+                $query->select('*');
+            }
+        ])->get();
+    }
+
+    public function getOscarByYear(int $ano)
+    {
+        return $this->model->with
+        ([
+            'premios_filmes.indicados' => function ($query){
+                $query->select('*');
+            }, 'premios_artistas.indicados' => function ($query){
+                $query->select('*');
+            }
+        ])->whereYear('data', $ano)
+        ->get();
     }
 
     public function create(array $data)

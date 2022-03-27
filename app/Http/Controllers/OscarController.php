@@ -27,6 +27,6 @@ class OscarController //extends BaseController
 
     public function getAno(int $ano)
     {
-        //return Oscar::where('ano', $ano)->get();
+        return response()->json($this->oscarRepository->getOscarByYear($ano));
     }
 }
