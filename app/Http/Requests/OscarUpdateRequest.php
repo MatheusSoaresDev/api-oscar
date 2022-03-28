@@ -3,24 +3,26 @@
 namespace App\Http\Requests;
 
 use App\Models\Oscar;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\ValidationException;
 use Pearl\RequestValidate\RequestAbstract;
 
-class OscarCreateRequest extends RequestAbstract
+class OscarUpdateRequest extends RequestAbstract
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-
     public function authorize(): bool
     {
         return true;
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         $this->verifyExistsOscarYear();
@@ -32,6 +34,11 @@ class OscarCreateRequest extends RequestAbstract
         ];
     }
 
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
     public function messages(): array
     {
         return [
@@ -51,7 +58,7 @@ class OscarCreateRequest extends RequestAbstract
     private function verifyExistsOscarYear()
     {
         $date = explode("-", $this->json->get('data'));
-        $query = Oscar::whereYear('data', '=', $date[0])->get();
+        $query = Oscar::whereYear('data', '=', $date[0])->where('id', '!=', $this->json->get('id'))->get();
 
         if(count($query) > 0){
             throw new HttpResponseException(response()->json([

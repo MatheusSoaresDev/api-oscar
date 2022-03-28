@@ -19,6 +19,7 @@ class CreateTableOscar extends Migration
             $table->date('data')->unique();
             $table->string('cidade');
             $table->string('apresentador');
+            $table->year('ano')->unique();
             $table->timestamps();
         });
     }

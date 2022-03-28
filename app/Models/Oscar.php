@@ -11,7 +11,7 @@ class Oscar extends Model
     use HasFactory;
 
     public $timestamps = true;
-    protected $fillable = ['id', 'local', 'data', 'cidade', 'apresentador'];
+    protected $fillable = ['id', 'local', 'data', 'cidade', 'apresentador', 'ano'];
     protected $table = 'oscar';
     protected $visible = ['id', 'local', 'data', 'cidade', 'apresentador', 'premios_filmes', 'premios_artistas'];
 

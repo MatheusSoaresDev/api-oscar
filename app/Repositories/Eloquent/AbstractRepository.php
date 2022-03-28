@@ -21,14 +21,14 @@ abstract class AbstractRepository
        return $this->model->create($data);
     }
 
-    public function update(array $data)
+    public function update(string $param, string $value, array $data)
     {
-
+        return $this->model->where($param, $value)->update($data);
     }
 
-    public function delete(string $id)
+    public function delete(string $param, string $value)
     {
-
+        return $this->model->where($param, $value)->truncate();
     }
 
     protected function resolveModel()
