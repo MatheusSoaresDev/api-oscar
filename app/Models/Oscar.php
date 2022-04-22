@@ -13,24 +13,15 @@ class Oscar extends Model
     public $timestamps = true;
     protected $fillable = ['id', 'local', 'data', 'cidade', 'apresentador', 'ano'];
     protected $table = 'oscar';
-    protected $visible = ['id', 'local', 'data', 'cidade', 'apresentador', 'premios_filmes', 'premios_artistas'];
+    protected $visible = ['id', 'local', 'data', 'cidade', 'apresentador', 'premios_producoes', 'premios_artistas'];
 
-    //protected $primaryKey = 'id';
-    //protected $keyType = 'string';
-    //public $incrementing = true;
-
-    /*protected static function booted()
+    public function premios_producoes()
     {
-        static::creating(fn(Oscar $oscar) => $oscar->uuid = (string) Uuid::uuid4());
-    }*/
-
-    public function premios_filmes()
-    {
-        return $this->hasMany(Producao::class);
+        return $this->hasMany(Premio_Producao::class);
     }
 
     public function premios_artistas()
     {
-        return $this->hasMany(Pessoa::class);
+        return $this->hasMany(Premio_Pessoa::class);
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OscarCreateRequest;
 use App\Http\Requests\OscarUpdateRequest;
 use App\Repositories\Contracts\OscarRepositoryInterface;
-use Illuminate\Http\Request;
 
 class OscarController //extends BaseController
 {
@@ -18,7 +17,7 @@ class OscarController //extends BaseController
 
     public function create(OscarCreateRequest $request)
     {
-        return response()->json($this->oscarRepository->create($request->all()));
+        return response()->json($this->oscarRepository->create($request->all()), 200);
     }
 
     public function getOscar()

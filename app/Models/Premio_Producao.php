@@ -4,31 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Ramsey\Uuid\Nonstandard\Uuid;
 
-abstract class Premio extends Model
+class Premio_Producao extends Model
 {
     use HasFactory;
 
+    protected $table = 'premio_producao';
     public $timestamps = true;
     protected $fillable = ['id', 'nome', 'oscar_id'];
     protected $visible = ['id', 'nome', 'indicados', 'pessoas'];
-
-    //protected $primaryKey = 'id';
-    //protected $keyType = 'string';
-    //public $incrementing = true;
-
-    /*protected static function booted()
-    {
-        static::creating(fn(Premio $premio) => $premio->uuid = (string) Uuid::uuid4());
-    }*/
 
     public function oscar()
     {
         return $this->belongsTo(Oscar::class);
     }
 
-    public abstract function indicados();
+    public function indicados()
+    {
+        return $this->hasMany(Producao_Filme::class, 'premio_producao_id');
+    }
+
 }

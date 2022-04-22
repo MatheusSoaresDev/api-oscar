@@ -17,11 +17,16 @@ class Filme extends Model
 
     public function premios()
     {
-        return $this->belongsToMany(Producao::class);
+        return $this->belongsToMany(Premio_Producao::class);
     }
 
-    /*public function generos()
+    public function producao()
     {
-        return $this->belongsToMany(Genero::class);
-    }*/
+        return $this->belongsToMany(Producao_Filme::class);
+    }
+
+    public function pessoa_artista()
+    {
+        return $this->belongsTo(Pessoa_Artista::class);
+    }
 }

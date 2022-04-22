@@ -13,13 +13,13 @@ class CreatePremioFilmeTable extends Migration
      */
     public function up()
     {
-        Schema::create('filme_producao', function (Blueprint $table) {
+        Schema::create('producao_filme', function (Blueprint $table) {
             $table->id();
 
             $table->boolean("vencedor")->default(false);
 
-            $table->unsignedBigInteger('producao_id');
-            $table->foreign('producao_id')->references('id')->on('premio_producao');
+            $table->unsignedBigInteger('premio_producao_id');
+            $table->foreign('premio_producao_id')->references('id')->on('premio_producao');
 
             $table->unsignedBigInteger('filme_id');
             $table->foreign('filme_id')->references('id')->on('filme');

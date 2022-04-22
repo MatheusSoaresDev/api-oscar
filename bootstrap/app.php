@@ -78,6 +78,7 @@ $app->register(\Laravel\Tinker\TinkerServiceProvider::class);
 $app->register(Pearl\RequestValidate\RequestServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware

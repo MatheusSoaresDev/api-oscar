@@ -13,10 +13,10 @@ class Artista extends Model
     public $timestamps = true;
     protected $fillable = ['id', 'nome', 'nascimento', 'nacionalidade', 'localNascimento', 'altura'];
     protected $table = 'artista';
-    protected $visible = ['id', 'nome', 'nascimento', 'nacionalidade', 'localNascimento', 'altura', 'vencedor'];
+    protected $visible = ['id', 'nome', 'nascimento', 'nacionalidade', 'localNascimento', 'altura', 'vencedor', 'filme'];
 
     public function premios()
     {
-        return $this->belongsToMany(Pessoa::class);
+        return $this->belongsToMany(Premio_Pessoa::class);
     }
 }

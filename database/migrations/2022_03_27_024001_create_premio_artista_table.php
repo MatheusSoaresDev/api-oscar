@@ -13,16 +13,19 @@ class CreatePremioArtistaTable extends Migration
      */
     public function up()
     {
-        Schema::create('artista_pessoa', function (Blueprint $table) {
+        Schema::create('pessoa_artista', function (Blueprint $table) {
             $table->id();
 
             $table->boolean("vencedor")->default(false);
 
-            $table->unsignedBigInteger('pessoa_id');
-            $table->foreign('pessoa_id')->references('id')->on('premio_pessoa');
+            $table->unsignedBigInteger('premio_pessoa_id');
+            $table->foreign('premio_pessoa_id')->references('id')->on('premio_pessoa');
 
             $table->unsignedBigInteger('artista_id');
             $table->foreign('artista_id')->references('id')->on('artista');
+
+            $table->unsignedBigInteger('filme_id');
+            $table->foreign('filme_id')->references('id')->on('filme');
 
             $table->timestamps();
         });
