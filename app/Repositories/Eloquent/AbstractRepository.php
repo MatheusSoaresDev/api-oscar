@@ -11,11 +11,6 @@ abstract class AbstractRepository
         $this->model = $this->resolveModel();
     }
 
-    public function all()
-    {
-        return $this->model->all();
-    }
-
     public function create(array $data)
     {
        return $this->model->create($data);

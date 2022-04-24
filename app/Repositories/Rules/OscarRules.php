@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Repositories\Rules;
 
-use App\Http\Requests\OscarCreateRequest;
-use App\Http\Requests\OscarUpdateRequest;
 use App\Repositories\Eloquent\Oscar\CreateOscar;
-use App\Repositories\Rules\OscarRules;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class OscarController
+class OscarRules
 {
-    private OscarRules $oscarRules;
+    private CreateOscar $createOscar;
 
-    public function __Construct(OscarRules $oscarRules)
+    public function __Construct(CreateOscar $createOscar)
     {
-        $this->oscarRules = $oscarRules;
+        $this->createOscar = $createOscar;
     }
 
-    public function create(OscarCreateRequest $request)
+    public function create(array $data)
     {
-        return $this->oscarRules->create($request->all());
+        try {
+            return responder()->success($this->createOscar->create($data))->respond(200);
+        } catch (ModelNotFoundException $error){
+            return responder()->error($error->getCode(), $error->getMessage())->respond(400);
+        }
     }
 
-    public function update(string $ano, array $data)
+    /*public function update(string $ano, array $data)
     {
         try{
             return responder()->success($this->oscarRepository->update($ano, $data))->respond(200);
@@ -52,5 +53,5 @@ class OscarController
         } catch (ModelNotFoundException $error){
             return responder()->error($error->getCode() ,$error->getMessage())->respond(500);
         }
-    }
+    }*/
 }

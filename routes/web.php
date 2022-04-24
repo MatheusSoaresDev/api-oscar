@@ -15,14 +15,13 @@
 $router->post('/auth', 'Auth\AuthController@login');
 
 $router->group(['middleware' => 'apiJwt'], function () use ($router) {
-    /*$router->post('/oscar', 'OscarController@create');
+    $router->post('/oscar', 'OscarController@create');
     $router->put('/oscar/{ano}', 'OscarController@update');
-    $router->delete('/oscar/{ano}', 'OscarController@delete');*/
-    //$router->post('/premio', 'PremioController@create');
+    $router->delete('/oscar/{ano}', 'OscarController@delete');
+
+    $router->post('/premio', 'PremioController@create');
 });
 
 $router->get('/oscar', 'OscarController@getOscar');
 $router->get('/oscar/{ano}', 'OscarController@getOscarByYear');
-
-$router->get('/teste', 'TesteController@index');
 

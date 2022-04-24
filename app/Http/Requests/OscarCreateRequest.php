@@ -23,10 +23,10 @@ class OscarCreateRequest extends RequestAbstract
 
     public function rules(): array
     {
-        $this->verifyExistsOscarYear();
+        //$this->verifyExistsOscarYear();
         return [
             "local" => "required",
-            "data" => "required|unique:oscar,|date_format:Y-m-d|after:".date("1929-05-16")."|before_or_equal:".date("Y-m-d"),
+            //"data" => "required|unique:oscar,|date_format:Y-m-d|after:".date("1929-05-16")."|before_or_equal:".date("Y-m-d"),
             "cidade" => "required",
             "apresentador" => "required",
         ];
@@ -46,19 +46,5 @@ class OscarCreateRequest extends RequestAbstract
 
             "apresentador.required" => "Informe o mestre de cerimônias dessa edição."
         ];
-    }
-
-    private function verifyExistsOscarYear()
-    {
-        $date = explode("-", $this->json->get('data'));
-        $query = Oscar::whereYear('data', '=', $date[0])->get();
-
-        if(count($query) > 0){
-            throw new HttpResponseException(response()->json([
-                'error_description' => "Já existe uma cerimônia registrada no ano de $date[0]",
-                'error_code' => 401,
-                'timestamp' => date('Y-m-d H:m:s')
-            ], 401));
-        }
     }
 }

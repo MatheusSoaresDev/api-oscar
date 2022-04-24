@@ -8,6 +8,9 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
 
+class_alias(Flugg\Responder\Facades\Responder::class, 'Responder');
+class_alias(Flugg\Responder\Facades\Transformation::class, 'Transformation');
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -60,6 +63,11 @@ $app->singleton(
     App\Repositories\Eloquent\PremioRepository::class,
 );
 
+$app->singleton(
+    App\Repositories\Rules\Oscar\OscarRulesInterface::class,
+    App\Repositories\Rules\Oscar\OscarRules::class,
+);
+
 /*
 |--------------------------------------------------------------------------
 | Register Config Files
@@ -77,6 +85,7 @@ $app->configure('tinker');
 $app->register(\Laravel\Tinker\TinkerServiceProvider::class);
 $app->register(Pearl\RequestValidate\RequestServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+$app->register(Flugg\Responder\ResponderServiceProvider::class);
 
 
 /*
