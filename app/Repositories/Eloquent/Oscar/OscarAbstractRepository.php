@@ -11,38 +11,30 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 abstract class OscarAbstractRepository
 {
     protected $model = Oscar::class;
-    //protected array $data;
 
     public function __Construct()
     {
         $this->model = app($this->model);
     }
 
-    /*public function update(string $ano, array $data)
+    protected function returnYear(string $data)
     {
-        $this->data = $data;
-        $oscar = $this->model->whereYear("data", '=', $ano)->first();
-        $this->verifyIfUpdateYear($oscar->data, $ano);
-
-        return $this->model->whereYear("data", '=', $ano)->update($this->data);
-
-        //dd($this->model->whereYear("data", '=', $this->returnYear($this->data["data"]))->update($data));
+        return (DateTime::createFromFormat("Y-m-d", $data))->format("Y");
     }
 
-    public function delete(string $param, string $value)
-    {
-        // TODO: Implement delete() method.
+    protected function findOscarByYear(int $ano){
+        return $this->model->whereYear('data', $ano)->first();
     }
 
-    public function getOscar()
+    protected function VerifyExistsOscarWithInformedYear(int $ano):void
     {
-        $oscar = $this->queryAllOscars()->get();
-        if(!$oscar->count()){
-            throw new ModelNotFoundException("Não foi encontrado nenhuma cerimônia cadastrada!");
+        $oscar = $this->findOscarByYear($ano);
+        if(!$oscar){
+            throw new ModelNotFoundException("Não foi encontrado nenhuma cerimônia no ano de $ano.", 401);
         }
-
-        return $oscar;
     }
+
+    /*
 
     public function getOscarByYear(int $ano)
     {
@@ -52,15 +44,10 @@ abstract class OscarAbstractRepository
         }
 
         return $oscar;
-    }
+    }*/
 
-    private function queryAllOscars()
+    protected function queryAllOscars()
     {
         return $this->model->with(['premios_producoes.indicados.producao', 'premios_artistas.indicados.artista', 'premios_artistas.indicados.filme']);
     }
-
-    private function verifyIfUpdateYear(int $anoBD, $anoInformado)
-    {
-
-    }*/
 }

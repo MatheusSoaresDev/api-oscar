@@ -22,35 +22,27 @@ class OscarController
         return $this->oscarRules->create($request->all());
     }
 
-    public function update(string $ano, array $data)
+    public function update(int $ano, OscarUpdateRequest $request)
     {
-        try{
-            return responder()->success($this->oscarRepository->update($ano, $data))->respond(200);
-        } catch (ModelNotFoundException $error){
-            return responder()->error($error->getCode(), $error->getMessage())->respond(400);
-        }
+        return $this->oscarRules->update($ano, $request->all());
     }
 
-    public function delete(string $param, string $value)
+    public function delete(int $ano)
     {
-        // TODO: Implement delete() method.
+        return $this->oscarRules->delete($ano);
     }
 
-    public function getOscar()
+    public function getAllOscars()
     {
-        try{
-            return responder()->success($this->oscarRepository->getOscar())->respond(200);
-        } catch (ModelNotFoundException $error){
-            return responder()->error($error->getCode(), $error->getMessage())->respond(400);
-        }
+        return $this->oscarRules->getOscar();
     }
 
-    public function getOscarByYear(int $ano)
+    /*public function getOscarByYear(int $ano)
     {
         try{
             return responder()->success($this->oscarRepository->getOscarByYear($ano))->respond(200);
         } catch (ModelNotFoundException $error){
             return responder()->error($error->getCode() ,$error->getMessage())->respond(500);
         }
-    }
+    }*/
 }

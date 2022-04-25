@@ -22,6 +22,6 @@ $router->group(['middleware' => 'apiJwt'], function () use ($router) {
     $router->post('/premio', 'PremioController@create');
 });
 
-$router->get('/oscar', 'OscarController@getOscar');
+$router->get('/oscar', 'OscarController@getAllOscars');
 $router->get('/oscar/{ano}', 'OscarController@getOscarByYear');
 

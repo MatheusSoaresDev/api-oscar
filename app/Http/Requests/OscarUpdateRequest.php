@@ -25,10 +25,9 @@ class OscarUpdateRequest extends RequestAbstract
      */
     public function rules(): array
     {
-        $this->verifyExistsOscarYear();
         return [
             "local" => "required",
-            "data" => "required|unique:oscar,|date_format:Y-m-d|after:".date("1929-05-16")."|before_or_equal:".date("Y-m-d"),
+            "data" => "required|date_format:Y-m-d|after:".date("1929-05-16")."|before_or_equal:".date("Y-m-d"),
             "cidade" => "required",
             "apresentador" => "required",
         ];
@@ -55,7 +54,7 @@ class OscarUpdateRequest extends RequestAbstract
         ];
     }
 
-    private function verifyExistsOscarYear()
+    /*private function verifyExistsOscarYear()
     {
         $date = explode("-", $this->json->get('data'));
         $query = Oscar::whereYear('data', '=', $date[0])->where('id', '!=', $this->json->get('id'))->get();
@@ -67,5 +66,5 @@ class OscarUpdateRequest extends RequestAbstract
                 'timestamp' => date('Y-m-d H:m:s')
             ], 401));
         }
-    }
+    }*/
 }

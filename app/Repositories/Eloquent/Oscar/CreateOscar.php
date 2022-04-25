@@ -9,24 +9,17 @@ class CreateOscar extends OscarAbstractRepository
 {
     public function create(array $data)
     {
-        $this->data = $data;
-        $this->verifyExistsOscarYear();
-
+        $this->verifyExistsOscarYear($data["data"]);
         return $this->model->create($data);
     }
 
-    private function verifyExistsOscarYear():void
+    private function verifyExistsOscarYear(string $data_cerimonia):void
     {
-        $ano = $this->returnYear($this->data["data"]);
-        $oscar = $this->model->whereYear('data', '=', $ano)->get();
+        $ano = $this->returnYear($data_cerimonia);
+        $oscar = $this->findOscarByYear($ano);
 
-        if(count($oscar)){
+        if($oscar){
             throw new ModelNotFoundException("Já existe uma cerimônia cadastrada no ano de $ano.", 400);
         }
-    }
-
-    private function returnYear(string $data)
-    {
-        return (DateTime::createFromFormat("Y-m-d", $data))->format("Y");
     }
 }
