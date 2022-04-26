@@ -15,7 +15,12 @@ class Premio_Producao extends Model
     protected $fillable = ['id', 'nome', 'oscar_id'];
     protected $visible = ['id', 'nome', 'indicados', 'pessoas'];
 
-    public function oscar()
+    public function oscars_premios_producoes() //N pra N//
+    {
+        return $this->hasMany(Oscar_Premio_Producao::class, 'id_oscar');
+    }
+
+    /*public function oscar()
     {
         return $this->belongsTo(Oscar::class);
     }
@@ -23,6 +28,6 @@ class Premio_Producao extends Model
     public function indicados()
     {
         return $this->hasMany(Producao_Filme::class, 'premio_producao_id');
-    }
+    }*/
 
 }

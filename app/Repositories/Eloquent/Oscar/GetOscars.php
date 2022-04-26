@@ -4,7 +4,7 @@ namespace App\Repositories\Eloquent\Oscar;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class GetAllOscars extends OscarAbstractRepository
+class GetOscars extends OscarAbstractRepository
 {
     public function getAllOscars()
     {

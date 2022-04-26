@@ -13,15 +13,15 @@ class Oscar extends Model
     public $timestamps = true;
     protected $fillable = ['id', 'local', 'data', 'cidade', 'apresentador', 'ano'];
     protected $table = 'oscar';
-    protected $visible = ['id', 'local', 'data', 'cidade', 'apresentador', 'premios_producoes', 'premios_artistas'];
+    protected $visible = ['id', 'local', 'data', 'cidade', 'apresentador', 'oscars_premios_producoes'];
 
-    public function premios_producoes()
+    public function oscars_premios_producoes() //N pra N//
     {
-        return $this->hasMany(Premio_Producao::class);
+        return $this->hasMany(Oscar_Premio_Producao::class);
     }
 
-    public function premios_artistas()
+    /*public function premios_artistas()
     {
         return $this->hasMany(Premio_Pessoa::class);
-    }
+    }*/
 }

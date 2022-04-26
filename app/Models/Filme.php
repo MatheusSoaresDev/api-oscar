@@ -13,7 +13,7 @@ class Filme extends Model
     public $timestamps = true;
     protected $fillable = ['id', 'nome', 'data_lancamento', 'duracao', 'pais', 'distribuidora'];
     protected $table = 'filme';
-    protected $visible = ['id', 'nome', 'data_lancamento', 'duracao', 'pais', 'distribuidora', 'vencedor'];
+    protected $visible = ['id', 'nome', 'data_lancamento', 'duracao', 'pais', 'distribuidora'];
 
     public function premios()
     {
@@ -27,6 +27,6 @@ class Filme extends Model
 
     public function pessoa_artista()
     {
-        return $this->belongsTo(Pessoa_Artista::class);
+        return $this->hasOne(Pessoa_Artista::class);
     }
 }

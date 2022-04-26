@@ -18,8 +18,8 @@ class CreatePremioFilmeTable extends Migration
 
             $table->boolean("vencedor")->default(false);
 
-            $table->unsignedBigInteger('premio_producao_id');
-            $table->foreign('premio_producao_id')->references('id')->on('premio_producao');
+            $table->unsignedBigInteger('oscar_premio_producao_id');
+            $table->foreign('oscar_premio_producao_id')->references('id')->on('oscar_premio_producao');
 
             $table->unsignedBigInteger('filme_id');
             $table->foreign('filme_id')->references('id')->on('filme');

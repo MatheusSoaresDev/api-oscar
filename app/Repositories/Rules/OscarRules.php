@@ -4,7 +4,7 @@ namespace App\Repositories\Rules;
 
 use App\Repositories\Eloquent\Oscar\CreateOscar;
 use App\Repositories\Eloquent\Oscar\DeleteOscar;
-use App\Repositories\Eloquent\Oscar\GetAllOscars;
+use App\Repositories\Eloquent\Oscar\GetOscars;
 use App\Repositories\Eloquent\Oscar\UpdateOscar;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -14,9 +14,9 @@ class OscarRules
     private CreateOscar $createOscar;
     private UpdateOscar $updateOscar;
     private DeleteOscar $deleteOscar;
-    private GetAllOscars $getAllOscars;
+    private GetOscars $getAllOscars;
 
-    public function __Construct(CreateOscar $createOscar, UpdateOscar $updateOscar, DeleteOscar $deleteOscar, GetAllOscars $getAllOscars)
+    public function __Construct(CreateOscar $createOscar, UpdateOscar $updateOscar, DeleteOscar $deleteOscar, GetOscars $getAllOscars)
     {
         $this->createOscar = $createOscar;
         $this->updateOscar = $updateOscar;

@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquent\Oscar;
 
 use App\Models\Oscar;
+use App\Models\Oscar_Premio_Producao;
 use App\Repositories\Contracts\OscarRepositoryInterface;
 use DateTime;
 use Exception;
@@ -48,6 +49,7 @@ abstract class OscarAbstractRepository
 
     protected function queryAllOscars()
     {
-        return $this->model->with(['premios_producoes.indicados.producao', 'premios_artistas.indicados.artista', 'premios_artistas.indicados.filme']);
+        //return $this->model->with(['premios_producoes.indicados.producao', 'premios_artistas.indicados.artista', 'premios_artistas.indicados.filme']);
+        return $this->model->with(['oscars_premios_producoes.premio_producao', 'oscars_premios_producoes.indicados.filme']);
     }
 }
